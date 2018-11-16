@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="19.0" y="0.0">solid.srp.solution.FuelPump</node>
+    <node x="0.0" y="101.0">solid.srp.solution.Vehicle</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="solid.srp.solution.Vehicle" target="solid.srp.solution.FuelPump">
+      <point x="0.0" y="-92.5" />
+      <point x="0.0" y="25.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="51.0" y="54.0" />
+  <SelectedNodes>
+    <node>solid.srp.solution.Vehicle</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Constructors</Category>
+    <Category>Methods</Category>
+    <Category>Inner Classes</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

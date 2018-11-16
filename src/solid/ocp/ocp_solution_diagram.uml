@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="329.2777777777778" y="212.0">solid.ocp.solution.Economy</node>
+    <node x="556.2777777777778" y="212.0">solid.ocp.solution.Comfort</node>
+    <node x="0.0" y="0.0">solid.ocp.solution.Vehicle</node>
+    <node x="444.5" y="44.5">solid.ocp.solution.DrivingMode</node>
+    <node x="783.2777777777778" y="212.0">solid.ocp.solution.Sport</node>
+    <node x="29.27777777777783" y="222.5">solid.ocp.solution.EventHandler</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="solid.ocp.solution.EventHandler" target="solid.ocp.solution.DrivingMode">
+      <point x="93.33333333333331" y="-48.5" />
+      <point x="262.61111111111114" y="182.0" />
+      <point x="470.375" y="182.0" />
+      <point x="-77.625" y="36.5" />
+    </edge>
+    <edge source="solid.ocp.solution.Sport" target="solid.ocp.solution.DrivingMode">
+      <point x="0.0" y="-59.0" />
+      <point x="886.7777777777778" y="182.0" />
+      <point x="625.625" y="182.0" />
+      <point x="77.625" y="36.5" />
+    </edge>
+    <edge source="solid.ocp.solution.EventHandler" target="solid.ocp.solution.Vehicle">
+      <point x="-93.33333333333331" y="-48.5" />
+      <point x="75.94444444444451" y="192.0" />
+      <point x="57.0" y="192.0" />
+      <point x="-57.0" y="81.0" />
+    </edge>
+    <edge source="solid.ocp.solution.Economy" target="solid.ocp.solution.DrivingMode">
+      <point x="0.0" y="-59.0" />
+      <point x="432.7777777777778" y="192.0" />
+      <point x="522.125" y="192.0" />
+      <point x="-25.875" y="36.5" />
+    </edge>
+    <edge source="solid.ocp.solution.Comfort" target="solid.ocp.solution.DrivingMode">
+      <point x="0.0" y="-59.0" />
+      <point x="659.7777777777778" y="192.0" />
+      <point x="573.875" y="192.0" />
+      <point x="25.875" y="36.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="495.5" y="165.0" />
+  <SelectedNodes>
+    <node>solid.ocp.solution.Economy</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Constructors</Category>
+    <Category>Methods</Category>
+    <Category>Inner Classes</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

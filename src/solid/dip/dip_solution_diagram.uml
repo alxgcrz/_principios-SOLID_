@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>solid.dip.solution</OriginalElement>
+  <nodes>
+    <node x="207.0" y="0.0">solid.dip.solution.Driver</node>
+    <node x="3.0" y="0.0">solid.dip.solution.Vehicle</node>
+    <node x="0.0" y="101.0">solid.dip.solution.RacingCar</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="solid.dip.solution.RacingCar" target="solid.dip.solution.Vehicle">
+      <point x="0.0" y="-70.5" />
+      <point x="0.0" y="25.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="51.0" y="94.0" />
+  <SelectedNodes>
+    <node>solid.dip.solution.RacingCar</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Constructors</Category>
+    <Category>Methods</Category>
+    <Category>Inner Classes</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
