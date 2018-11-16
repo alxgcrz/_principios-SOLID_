@@ -1,4 +1,4 @@
-# Apuntes - [S.O.L.I.D.]
+# Apuntes - [Principios S.O.L.I.D.]
 
 ## SRP (Single Responsibility Principle)
 
