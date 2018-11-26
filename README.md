@@ -1,5 +1,31 @@
 # Apuntes - [Principios S.O.L.I.D.]
 
+[Principio de Responsabilidad Única (Single responsability principle - SRP)](https://es.wikipedia.org/wiki/Principio_de_responsabilidad_%C3%BAnica)
+
+Este principio establece que cada módulo o clase debe tener **responsabilidad sobre una sola parte de la funcionalidad** proporcionada por el software y esta responsabilidad debe estar encapsulada en su totalidad por la clase. Todos sus servicios deben estar estrechamente alineados con esa responsabilidad.
+
+[Principio de Abierto/Cerrado (Open/closed principle - OCP)](https://es.wikipedia.org/wiki/Principio_de_abierto/cerrado)
+
+Este principio establece que **«una entidad de software (clase, módulo, función, etc.) debe quedarse abierta para su extensión, pero cerrada para su modificación»**. Es decir, se debe poder extender el comportamiento de tal entidad pero sin modificar su código fuente.
+
+[Principio de Substitución de Liskov (Liskov substitution principle - LSP)](https://es.wikipedia.org/wiki/Principio_de_sustituci%C3%B3n_de_Liskov)
+
+Este principo puede definirse como: **Cada clase que hereda de otra puede usarse como su padre sin necesidad de conocer las diferencias entre ellas**.
+
+[Principio de Segregración de la Interfaz (Interface segregation principle - ISP)](https://es.wikipedia.org/wiki/Principio_de_segregaci%C3%B3n_de_la_interfaz)
+
+Este principio establece que los clientes de un programa dado sólo deberían conocer **aquellos métodos del programa que realmente usan**, y no aquellos que no necesitan usar.
+
+[Principio de Inversión de Dependencias (Dependency inversion principle - DIP)](https://es.wikipedia.org/wiki/Inyecci%C3%B3n_de_dependencias)
+
+Este principio consta de dos partes:
+
+  1. **Módulos de alto nivel no deben depender de módulos de bajo nivel**. Ambos deben depender de abstracciones.
+
+  2. **Abstracciones no deberían depender de detalles**. Los detalles debieran depender de abstracciones.
+
+---
+
 ## SRP (Single Responsibility Principle)
 
 > A class should have one, and only one, reason to change.  
@@ -17,7 +43,7 @@ Las clases con una única responsabilidad son más fáciles de mantener y más f
 
 En el siguiente ejemplo tenemos la clase _Vehicle_ que modela un objeto de tipo _Vehicle_ y que además tiene la responsabilidad de repostar el vehículo. Por tanto si cambia el modelo _Vehicle_ o si cambia la forma de repostar combustible esta clase tendrá dos motivos para cambiar y por tanto no cumple el **_Principio de Responsabilidad Única_**.
 
-![Diagram](https://raw.githubusercontent.com/alxgcrz/design-patterns-java/master/src/solid/srp/srp_violation_diagram.png)
+![Diagram](https://raw.githubusercontent.com/alxgcrz/apuntes-principios-solid/master/src/solid/srp/srp_violation_diagram.png)
 
 ```java
 public class Vehicle {
@@ -49,7 +75,7 @@ public class Vehicle {
 
 Para aplicar el **_Principio de Responsabilidad Única_** deberemos refactorizar la clase _Vehicle_ y crear una clase como por ejemplo _FuelPump_ cuya responsabilidad sea el repostaje de combustible del vehículo, eliminando este método de la clase _Vehicle_.
 
-![Diagram](https://raw.githubusercontent.com/alxgcrz/design-patterns-java/master/src/solid/srp/srp_solution_diagram.png)
+![Diagram](https://raw.githubusercontent.com/alxgcrz/apuntes-principios-solid/master/src/solid/srp/srp_solution_diagram.png)
 
 ```java
 public class FuelPump {
@@ -76,7 +102,7 @@ En el caso de que fuera beneficioso el compartir código sería mejor optar por 
 
 En el ejemplo tenemos la clase _EventHandler_ con un método _changeDrivingMode()_ que permite cambiar ciertos parámetros de la clase _Vehicle_ según el modo de conducción. Este modo de conducción se codifica en una enumeración.
 
-![Diagram](https://raw.githubusercontent.com/alxgcrz/design-patterns-java/master/src/solid/ocp/ocp_violation_diagram.png)
+![Diagram](https://raw.githubusercontent.com/alxgcrz/apuntes-principios-solid/master/src/solid/ocp/ocp_violation_diagram.png)
 
 ```java
 class EventHandler {
@@ -141,7 +167,7 @@ Para cumplir el **_Open/Closed Principle_** deberemos refactorizar el código de
 
 Esto lo conseguimos haciendo uso de las _interfaces_ (en vez del uso de la herencia) de modo que en el método _changeDrivingMode(DrivingMode)_ utilicemos la interfaz _DrivingMode_. Si necesitamos añadir un nuevo modo de conducción únicamente será necesario añadir la nueva clase que herede de la interfaz _DrivingMode_ para que el sistema tenga en cuenta el nuevo modo. El método _changeDrivingMode(DrivingMode)_ permanece inalterado y plenamente funcional ya que este método hace uso de la interfaz y ésta no se ha modificado.
 
-![Diagram](https://raw.githubusercontent.com/alxgcrz/design-patterns-java/master/src/solid/ocp/ocp_solution_diagram.png)
+![Diagram](https://raw.githubusercontent.com/alxgcrz/apuntes-principios-solid/master/src/solid/ocp/ocp_solution_diagram.png)
 
 ```java
 interface DrivingMode {
@@ -215,7 +241,7 @@ Para conseguir esto las subclases deberían seguir estas reglas:
 
 En el ejemplo tenemos las clases _Cuervo_ y _Avestruz_ que heredan de la clase _Ave_.
 
-![Diagram](https://raw.githubusercontent.com/alxgcrz/design-patterns-java/master/src/solid/lsp/lsp_violation_diagram.png)
+![Diagram](https://raw.githubusercontent.com/alxgcrz/apuntes-principios-solid/master/src/solid/lsp/lsp_violation_diagram.png)
 
 ```java
 class Ave {
@@ -251,7 +277,7 @@ Según el **_Liskov Substitution Principle_** deberíamos poder utilizar las cla
 
 Para cumplir con **_Liskov Substitution Principle_** refactorizamos la superclase _Bird_ y creamos las clases _NonFlight_ y _Flight_. Movemos el método _fly()_ a la clase correspondiente y de esta forma podemos usar la subclase y la superclase de forma indistinta.
 
-![Diagram](https://raw.githubusercontent.com/alxgcrz/design-patterns-java/master/src/solid/lsp/lsp_solution_diagram.png)
+![Diagram](https://raw.githubusercontent.com/alxgcrz/apuntes-principios-solid/master/src/solid/lsp/lsp_solution_diagram.png)
 
 ```java
 class Bird {
@@ -278,7 +304,7 @@ Al seguir este principio se evitan interfaces infladas que definen métodos para
 
 En el ejemplo tenemos las subclases _Drone_ y _Car_ que implementan la interfaz _Switches_.
 
-![Diagram](https://raw.githubusercontent.com/alxgcrz/design-patterns-java/master/src/solid/isp/isp_violation_diagram.png)
+![Diagram](https://raw.githubusercontent.com/alxgcrz/apuntes-principios-solid/master/src/solid/isp/isp_violation_diagram.png)
 
 ```java
 interface Switches {
@@ -344,7 +370,7 @@ En este ejemplo las subclases, debido a la herencia, se ven obligadas a implemen
 
 Para cumplir con el **_Interface Segregation Principle_** debemos refactorizar el código de forma que en vez de tener una única interfaz con demasiada responsabilidad tengamos tres interfaces con menor responsabilidad.
 
-![Diagram](https://raw.githubusercontent.com/alxgcrz/design-patterns-java/master/src/solid/isp/isp_solution_diagram.png)
+![Diagram](https://raw.githubusercontent.com/alxgcrz/apuntes-principios-solid/master/src/solid/isp/isp_solution_diagram.png)
 
 ```java
 interface EngineSwitch {
@@ -416,7 +442,7 @@ Sus implementaciones deben seguir el **_Liskov Substitution Principle_** para qu
 
 En el ejemplo tenemos la clase _Pilot_ que tiene una dependencia con la clase _RacingCar_ ya que en su método constructor se construye una instancia de la clase _RacingCar_.
 
-![Diagram](https://raw.githubusercontent.com/alxgcrz/design-patterns-java/master/src/solid/dip/dip_violation_diagram.png)
+![Diagram](https://raw.githubusercontent.com/alxgcrz/apuntes-principios-solid/master/src/solid/dip/dip_violation_diagram.png)
 
 ```java
 class RacingCar {
@@ -448,7 +474,7 @@ class Pilot {
 
 Para introducir una abstracción que desacople ambas clases creamos la interfaz _Vehicle_ de forma que la clase _Pilot_ en su constructor recibirá un objeto que implemente dicha interfaz. En el ejemplo la clase _RacingCar_ implementa dicha interfaz pero si hemos aplicado correctamente los otros principios podremos utilizar otras implentaciones y ampliar la funcionalidad del sistema sin que se produzcan errores.
 
-![Diagram](https://raw.githubusercontent.com/alxgcrz/design-patterns-java/master/src/solid/dip/dip_solution_diagram.png)
+![Diagram](https://raw.githubusercontent.com/alxgcrz/apuntes-principios-solid/master/src/solid/dip/dip_solution_diagram.png)
 
 ```java
 interface Vehicle {
@@ -487,6 +513,8 @@ class Driver {
 Este principio está relacionado con el concepto de **Inyección de Dependencias** ya que será otro sistema el que _inyecte_ en tiempo de ejecución la implementación que requiera la clase.
 
 ---
+
+Versión en PDF: [Principios_SOLID.pdf](https://raw.githubusercontent.com/alxgcrz/apuntes-principios-solid/master/Principios_SOLID.pdf)
 
 ## License
 
