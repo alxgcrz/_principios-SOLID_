@@ -28,7 +28,7 @@ Este principio consta de dos partes:
 <div class="page"/>
 <!-- markdownlint-enable MD033 -->
 
-## SRP (Single Responsibility Principle)
+## Single Responsibility Principle
 
 > A class should have one, and only one, reason to change.  
 > -- Robert C. Martin
@@ -92,7 +92,7 @@ public class FuelPump {
 <div class="page"/>
 <!-- markdownlint-enable MD033 -->
 
-## OCP (Open/Closes Principle)
+## Open/Closed Principle
 
 > "Software entities (classes, modules, functions, etc...) should be open for extension, but closed for modification."
 
@@ -235,7 +235,7 @@ class EventHandler {
 <div class="page"/>
 <!-- markdownlint-enable MD033 -->
 
-## LSP (Liskov Substitution Principle)
+## Liskov Substitution Principle
 
 El *__Liskov Substitution Principle__* extiende el *__Open/Closed Principle__* pero focalizando en el comportamiento de una superclase y sus subtipos de forma que si aplicamos este principio en nuestras clases e interfaces estaremos evitando todo tipo de efectos secundarios.
 
@@ -305,7 +305,7 @@ public class NonFlight extends Bird {
 <div class="page"/>
 <!-- markdownlint-enable MD033 -->
 
-## ISP (Interface Segregation Principle)
+## Interface Segregation Principle
 
 > Clients should not be forced to depend upon interfaces that they do not use.  
 > -- Robert C. Martin
@@ -438,7 +438,7 @@ Ahora la subclase _'Drone'_ implementa la interfaz _'CameraSwitch'_ y la subclas
 <div class="page"/>
 <!-- markdownlint-enable MD033 -->
 
-## DIP (Dependency Injection Principle)
+## Dependency Injection Principle
 
 La idea general de este principio es tan simple como importante: los módulos de alto nivel, que brindan una lógica compleja, deben ser fácilmente reutilizables y no verse afectados por los cambios en los módulos de bajo nivel, que brindan funciones de utilidad. Para lograr eso, se deben introducir una abstracción que desacople los módulos de alto y bajo nivel entre sí.
 
@@ -532,7 +532,7 @@ Este principio está relacionado con el concepto de **"Inyección de Dependencia
 
 Versión en PDF: [Principios_SOLID.pdf](https://raw.githubusercontent.com/alxgcrz/apuntes-principios-solid/master/Principios_SOLID.pdf)
 
-## License
+#### License
 
 [![Licencia de Creative Commons](https://i.creativecommons.org/l/by-sa/4.0/80x15.png)](http://creativecommons.org/licenses/by-sa/4.0/)  
 Esta obra está bajo una [licencia de Creative Commons Reconocimiento-Compartir Igual 4.0 Internacional](http://creativecommons.org/licenses/by-sa/4.0/).

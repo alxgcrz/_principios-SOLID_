@@ -1,3 +1,4 @@
+## Ignoring update.bat
 *.bat
 
 # Created by https://www.gitignore.io/api/java,windows,intellij
