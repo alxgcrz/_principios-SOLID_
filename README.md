@@ -30,7 +30,7 @@ Este principio consta de dos partes:
 
 ## _"Single Responsibility Principle"_
 
-![SRP](https://web.archive.org/web/20160505182235if_/https://lostechies.com/derickbailey/files/2011/03/SingleResponsibilityPrinciple2_71060858.jpg)
+![SRP](http://www.globalnerdy.com/wordpress/wp-content/uploads/2009/07/single_responsibility_principle_thumb.jpg)
 
 > A class should have one, and only one, reason to change.  
 > -- Robert C. Martin
@@ -94,7 +94,7 @@ class FuelPump {
 
 ## _"Open/Closed Principle"_
 
-![OCP](https://web.archive.org/web/20160505182705if_/https://lostechies.com/derickbailey/files/2011/03/OpenClosedPrinciple2_2C596E17.jpg)
+![OCP](http://www.globalnerdy.com/wordpress/wp-content/uploads/2009/07/openclosed_principle_thumb.jpg)
 
 > "Software entities (classes, modules, functions, etc...) should be open for extension, but closed for modification."
 
@@ -233,7 +233,7 @@ class EventHandler {
 
 ## _"Liskov Substitution Principle"_
 
-![LSP](https://web.archive.org/web/20160505182607if_/https://lostechies.com/derickbailey/files/2011/03/LiskovSubtitutionPrinciple_52BB5162.jpg)
+![LSP](http://www.globalnerdy.com/wordpress/wp-content/uploads/2009/07/liskov_substitution_principle.jpg)
 
 El *__Liskov Substitution Principle__* extiende el *__Open/Closed Principle__* pero focalizando en el comportamiento de una superclase y sus subtipos de forma que si aplicamos este principio en nuestras clases e interfaces estaremos evitando todo tipo de efectos secundarios.
 
@@ -327,7 +327,7 @@ public static void main(String[] args) {
 
 ## _"Interface Segregation Principle"_
 
-![ISP](https://web.archive.org/web/20160505182554if_/https://lostechies.com/derickbailey/files/2011/03/InterfaceSegregationPrinciple_60216468.jpg)
+![ISP](http://www.globalnerdy.com/wordpress/wp-content/uploads/2009/07/interface_segregation_principle_thumb.jpg)
 
 > Clients should not be forced to depend upon interfaces that they do not use.  
 > -- Robert C. Martin
@@ -462,7 +462,7 @@ Ahora la subclase `Drone` implementa la interfaz `CameraSwitch` y la subclase `C
 
 ## _"Dependency Inversion Principle"_
 
-![DIP](https://web.archive.org/web/20160505182542if_/https://lostechies.com/derickbailey/files/2011/03/DependencyInversionPrinciple_0278F9E2.jpg)
+![DIP](http://www.globalnerdy.com/wordpress/wp-content/uploads/2009/07/dependency_inversion_principle.jpg)
 
 La idea general de este principio es tan simple como importante: los módulos de alto nivel, que brindan una lógica compleja, deben ser fácilmente reutilizables y no verse afectados por los cambios en los módulos de bajo nivel, que brindan funciones de utilidad. Para lograr eso, se deben introducir una abstracción que desacople los módulos de alto y bajo nivel entre sí.
 
@@ -551,6 +551,11 @@ class Driver {
 Este principio está relacionado con el concepto de **"Inyección de Dependencias"** ya que será otro sistema el que _'inyecte'_ en tiempo de ejecución la implementación que requiera la clase en el constructor.
 
 ---
+
+## Links
+
+- <https://es.wikipedia.org/wiki/SOLID>
+- <https://blogs.msdn.microsoft.com/cdndevs/2009/07/15/the-solid-principles-explained-with-motivational-posters/>
 
 ## License
 
