@@ -1,22 +1,50 @@
 # [Principios S.O.L.I.D.]
 
-- [**Principio de Responsabilidad Única** ("Single Responsibility Principle" - SRP)](https://es.wikipedia.org/wiki/Principio_de_responsabilidad_%C3%BAnica)
+SOLID es el acrónimo que acuñó **Michael Feathers**, basándose en los principios de la programación orientada a objetos que **Robert C. Martin** había recopilado en el año 2000 en su paper ["_Design Principles and Design Patterns_"](http://www.cvc.uab.es/shared/teach/a21291/temes/object_oriented_design/materials_adicionals/principles_and_patterns.pdf).
+
+Ocho años más tarde, el _tío Bob_ siguió compendiando consejos y buenas prácticas de desarrollo y se convirtió en el padre del código limpio con su célebre libro _'Clean Code'_.
+
+Entre los objetivos de tener en cuenta estos 5 principios a la hora de escribir código encontramos:
+
+- Crear un **software eficaz**: que cumpla con su cometido y que sea **robusto y estable**.
+- Escribir un **código limpio y flexible** ante los cambios: que se pueda modificar fácilmente según necesidad, que sea **reutilizable y mantenible**.
+- Permitir **escalabilidad**: que acepte ser ampliado con nuevas funcionalidades de manera ágil.
+
+En  este sentido la aplicación de los principios SOLID está muy relacionada con la comprensión y el uso de **patrones de diseño**, que nos permitirán mantener una **alta cohesión** y, por tanto, un **bajo acoplamiento** de software. En definitiva, desarrollar un software de calidad.
+
+El acoplamiento se refiere al **grado de interdependencia que tienen dos unidades de software entre sí**, entendiendo por unidades de software: clases, subtipos, métodos, módulos, funciones, bibliotecas, etc.
+
+Si dos unidades de software son completamente independientes la una de la otra, decimos que están desacopladas.
+
+La cohesión de software es el **grado en que elementos diferentes de un sistema permanecen unidos para alcanzar un mejor resultado** que si trabajaran por separado. Se refiere a la forma en que podemos agrupar diversas unidades de software para crear una unidad mayor.
+
+Los principios SOLID son eso: principios, es decir, **buenas prácticas** que pueden ayudar a escribir un mejor código: más limpio, mantenible y escalable.
+
+Como indica el propio Robert C. Martin en su artículo “_Getting a SOLID start_” no se trata de reglas, ni leyes, ni verdades absolutas, sino más bien soluciones de sentido común a problemas comunes. Son heurísticos, basados en la experiencia: “se ha observado que funcionan en muchos casos; pero no hay pruebas de que siempre funcionen, ni de que siempre se deban seguir.”
+
+Dice el _tío Bob_, que SOLID nos ayuda a categorizar lo que es un buen o mal código y es innegable que un código limpio tenderá más a salir airoso del “control de calidad de código” WTFs/Minute. Consejo: cuando estés revisando un código, lleva la cuenta de cuántas veces por minuto sale de tu boca un WTF?.
+
+![WTFs/Minute](https://profile.es/pro/wp-content/media/code-quality-measurement-WTF.png)
+
+Los 5 principios SOLID son:
+
+- [**S - Principio de Responsabilidad Única** ("_Single Responsibility Principle_" - SRP)](https://es.wikipedia.org/wiki/Principio_de_responsabilidad_%C3%BAnica)
 
 Este principio establece que cada módulo o clase debe tener **responsabilidad sobre una sola parte de la funcionalidad** proporcionada por el software y esta responsabilidad debe estar encapsulada en su totalidad por la clase. Todos sus servicios deben estar estrechamente alineados con esa responsabilidad.
 
-- [**Principio de Abierto/Cerrado** ("Open/Closed Principle" - OCP)](https://es.wikipedia.org/wiki/Principio_de_abierto/cerrado)
+- [**O - Principio de Abierto/Cerrado** ("Open/Closed Principle" - OCP)](https://es.wikipedia.org/wiki/Principio_de_abierto/cerrado)
 
 Este principio establece que **«una entidad de software (clase, módulo, función, etc.) debe quedar abierta para su extensión, pero cerrada para su modificación»**. Es decir, se debe poder extender el comportamiento de la entidad pero sin modificar su código fuente.
 
-- [**Principio de Substitución de Liskov** ("Liskov Substitution Principle" - LSP)](https://es.wikipedia.org/wiki/Principio_de_sustituci%C3%B3n_de_Liskov)
+- [**L - Principio de Substitución de Liskov** ("Liskov Substitution Principle" - LSP)](https://es.wikipedia.org/wiki/Principio_de_sustituci%C3%B3n_de_Liskov)
 
 Este principo puede definirse como: **«cada clase que hereda de otra puede usarse como su padre sin necesidad de conocer las diferencias entre ellas»**.
 
-- [**Principio de Segregación de la Interfaz** ("Interface Segregation Principle" - ISP)](https://es.wikipedia.org/wiki/Principio_de_segregaci%C3%B3n_de_la_interfaz)
+- [**I - Principio de Segregación de la Interfaz** ("Interface Segregation Principle" - ISP)](https://es.wikipedia.org/wiki/Principio_de_segregaci%C3%B3n_de_la_interfaz)
 
 Este principio establece que los clientes de un programa dado sólo deberían conocer **aquellos métodos del programa que realmente usan, y no aquellos que no necesitan usar**.
 
-- [**Principio de Inversión de Dependencias** ("Dependency Inversion Principle" - DIP)](https://es.wikipedia.org/wiki/Inyecci%C3%B3n_de_dependencias)
+- [**D - Principio de Inversión de Dependencias** ("Dependency Inversion Principle" - DIP)](https://es.wikipedia.org/wiki/Inyecci%C3%B3n_de_dependencias)
 
 Este principio consta de dos partes:
 
@@ -24,20 +52,16 @@ Este principio consta de dos partes:
 
   2. **Abstracciones no deberían depender de detalles**. Los detalles debieran depender de abstracciones.
 
-<!-- markdownlint-disable MD033 -->
-<div class="page"/>
-<!-- markdownlint-enable MD033 -->
-
 ## _"Single Responsibility Principle"_
 
 ![SRP](https://raw.githubusercontent.com/alxgcrz/apuntes-principios-solid/master/images/single_responsibility_principle_thumb.jpg)
 
-> A class should have one, and only one, reason to change.  
+> _"A class should have one, and only one, reason to change"_  
 > -- Robert C. Martin
 
 Este principio ayuda a crear código de calidad, mantenible, reusable, testeable, fácil de implementar y previene de efectos secundarios en los cambios. Es aplicable a clases, componentes de software o microservicios.
 
-Los requerimientos del código pueden cambiar con el tiempo. Cada uno de estos cambios en los requerimientos modifica al menos la responsabilidad de una clase. Si una clase tiene muchas responsabilidades deberá cambiar más a menudo que si sólo tuviera una responsabilidad. Estos cambios tan reiterados pueden introducir errores o efectos secundarios en otras partes del código. Por tanto, **una clase sólo debería cambiar por una única razón** o lo que es lo mismo, que cambie la responsabilidad de la que se ocupa.
+Los requerimientos del código pueden cambiar con el tiempo. Cada uno de estos cambios en los requerimientos modifica al menos la responsabilidad de una clase. Si una clase tiene muchas responsabilidades deberá cambiar más a menudo que si sólo tuviera una responsabilidad. Estos cambios tan reiterados pueden introducir errores o efectos secundarios en otras partes del código. Por tanto, **una clase sólo debería cambiar por una única razón** o lo que es lo mismo, que cambie la responsabilidad de la que se ocupa. Es esto, precisamente, "_razón para cambiar"_, lo que Robert C. Martin identifica como "responsabilidad".
 
 Las clases con una única responsabilidad son más fáciles de mantener y más fáciles de explicar.
 
@@ -76,7 +100,7 @@ Para aplicar el *__"Single Responsibility Principle"__* deberemos refactorizar l
 
 ![Diagram](https://raw.githubusercontent.com/alxgcrz/apuntes-principios-solid/master/src/solid/srp/srp_solution_diagram.png)
 
-Quedano la nueva clase de esta forma:
+Quedando la nueva clase de esta forma:
 
 ```java
 class FuelPump {
@@ -88,15 +112,12 @@ class FuelPump {
 }
 ```
 
-<!-- markdownlint-disable MD033 -->
-<div class="page"/>
-<!-- markdownlint-enable MD033 -->
-
 ## _"Open/Closed Principle"_
 
 ![OCP](https://raw.githubusercontent.com/alxgcrz/apuntes-principios-solid/master/images/openclosed_principle_thumb.jpg)
 
-> "Software entities (classes, modules, functions, etc...) should be open for extension, but closed for modification."
+> _"Software entities (classes, modules, functions, etc...) should be open for extension, but closed for modification"_  
+> -- Robert C. Martin
 
 La idea es escribir código de forma que sea posible añadir nuevas funcionalidades pero sin modificar el código existente. Esto previene situaciones en que al modificar clases base nos veamos obligados también a adaptar todas las clases dependientes.
 
@@ -137,7 +158,7 @@ class EventHandler {
                 vehicle.setPower(200);
                 vehicle.setSuspensionHeight(30);
                 break;
-            // Cuando necesitemos añadir otro modo (e.g. ECONOMY) 2 classes deberán cambiar 'DrivingMode' and 'EventHandler'.
+            // Cuando necesitemos añadir otro modo (e.g. ECONOMY) deberemos cambiar la clase 'EventHandler' y la enumeración 'DrivingMode'.
         }
     }
 }
@@ -226,10 +247,6 @@ class EventHandler {
     }
 }
 ```
-
-<!-- markdownlint-disable MD033 -->
-<div class="page"/>
-<!-- markdownlint-enable MD033 -->
 
 ## _"Liskov Substitution Principle"_
 
@@ -321,15 +338,11 @@ public static void main(String[] args) {
 }
 ```
 
-<!-- markdownlint-disable MD033 -->
-<div class="page"/>
-<!-- markdownlint-enable MD033 -->
-
 ## _"Interface Segregation Principle"_
 
 ![ISP](https://raw.githubusercontent.com/alxgcrz/apuntes-principios-solid/master/images/interface_segregation_principle_thumb.jpg)
 
-> Clients should not be forced to depend upon interfaces that they do not use.  
+> _"Clients should not be forced to depend upon interfaces that they do not use"_  
 > -- Robert C. Martin
 
 El objetivo de este principio, al igual que el *__"Single Responsibility Principle"__* es reducir los efectos secundarios y la frecuencia de los cambios si dividimos el código en múltiples partes independientes.
@@ -456,10 +469,6 @@ class Drone implements CameraSwitch {
 
 Ahora la subclase `Drone` implementa la interfaz `CameraSwitch` y la subclase `Car` implementa la interfaz `RadioSwitch`. Ambas interfaces heredan de la interfaz común `EngineSwitch`.
 
-<!-- markdownlint-disable MD033 -->
-<div class="page"/>
-<!-- markdownlint-enable MD033 -->
-
 ## _"Dependency Inversion Principle"_
 
 ![DIP](https://raw.githubusercontent.com/alxgcrz/apuntes-principios-solid/master/images/dependency_inversion_principle_thumb.jpg)
@@ -556,6 +565,7 @@ Este principio está relacionado con el concepto de [*"Inyección de Dependencia
 
 - <https://es.wikipedia.org/wiki/SOLID>
 - <https://blogs.msdn.microsoft.com/cdndevs/2009/07/15/the-solid-principles-explained-with-motivational-posters/>
+- <https://profile.es/blog/principios-solid-desarrollo-software-calidad/>
 
 ## License
 
