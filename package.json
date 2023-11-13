@@ -1,0 +1,21 @@
+{
+  "name": "principios_solid",
+  "version": "1.0.0",
+  "description": "Principios S.O.L.I.D.",
+  "private": true,
+  "main": "README.md",
+  "author": "@alxgcrz",
+  "license": "CC-BY-4.0",
+  "homepage": "https://alxgcrz.com/SOLID.html",
+  "scripts": {
+    "pandoc:create": "pandoc -d custom",
+    "pandoc:copy": "copy *.html %npm_config_html%",
+    "pdf:create": "mdpdf README.md README.pdf",
+    "pdf:copy": "copy README.pdf %npm_config_pdf%",
+    "live": "live-server SOLID.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alxgcrz/_principios-SOLID_.git"
+  }
+}
