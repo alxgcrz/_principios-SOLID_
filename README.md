@@ -10,17 +10,17 @@ SOLID es el acrónimo que acuñó **Michael Feathers**, basándose en los princi
 
 Ocho años más tarde, el _tío Bob_ siguió compendiando consejos y buenas prácticas de desarrollo y se convirtió en el padre del código limpio con su célebre libro _'Clean Code'_.
 
-Entre los objetivos de tener en cuenta estos 5 principios a la hora de escribir código encontramos:
+Entre los objetivos a alcanzar si tenemos en cuenta estos 5 principios a la hora de escribir código encontramos:
 
-- Crear un **software eficaz**: que cumpla con su cometido y que sea **robusto y estable**.
-- Escribir un **código limpio y flexible** ante los cambios: que se pueda modificar fácilmente según necesidad, que sea **reutilizable y mantenible**.
-- Permitir **escalabilidad**: que acepte ser ampliado con nuevas funcionalidades de manera ágil.
+- Crear un **software eficaz** que cumpla con su cometido y que sea **robusto y estable**.
+- Escribir un **código limpio y flexible** ante los cambios, lo que significa que se pueda modificar fácilmente según necesidad, que sea **reutilizable y mantenible**.
+- Permitir **escalabilidad**, o lo que es lo mismo, que acepte ser ampliado con nuevas funcionalidades de manera ágil.
 
 En  este sentido la aplicación de los principios SOLID está muy relacionada con la comprensión y el uso de **patrones de diseño**, que nos permitirán mantener una **alta cohesión** y, por tanto, un **bajo acoplamiento** de software. En definitiva, desarrollar un software de calidad.
 
 El acoplamiento se refiere al **grado de interdependencia que tienen dos unidades de software entre sí**, entendiendo por unidades de software: clases, subtipos, métodos, módulos, funciones, bibliotecas, etc.
 
-Si dos unidades de software son completamente independientes la una de la otra, decimos que están desacopladas.
+Si dos unidades de software son completamente independientes la una de la otra, decimos que están **desacopladas**.
 
 La cohesión de software es el **grado en que elementos diferentes de un sistema permanecen unidos para alcanzar un mejor resultado** que si trabajaran por separado. Se refiere a la forma en que podemos agrupar diversas unidades de software para crear una unidad mayor.
 
@@ -75,13 +75,15 @@ Los 5 principios SOLID son:
 
 Este principio ayuda a crear código de calidad, mantenible, reusable, testeable, fácil de implementar y previene de efectos secundarios en los cambios. Es aplicable a clases, componentes de software o microservicios.
 
-Los requerimientos del código pueden cambiar con el tiempo. Cada uno de estos cambios en los requerimientos modifica al menos la responsabilidad de una clase. Si una clase tiene muchas responsabilidades deberá cambiar más a menudo que si sólo tuviera una responsabilidad. Estos cambios tan reiterados pueden introducir errores o efectos secundarios en otras partes del código. Por tanto, **una clase sólo debería cambiar por una única razón** o lo que es lo mismo, que cambie la responsabilidad de la que se ocupa. Es esto, precisamente, "_razón para cambiar"_, lo que Robert C. Martin identifica como "responsabilidad".
+Los requerimientos del código pueden cambiar con el tiempo. Cada uno de estos cambios en los requerimientos modifica al menos la responsabilidad de una clase. Si una clase tiene muchas responsabilidades deberá cambiar más a menudo que si sólo tuviera una responsabilidad.
+
+Estos cambios tan reiterados pueden introducir errores o efectos secundarios en otras partes del código. Por tanto, **una clase sólo debería cambiar por una única razón** o lo que es lo mismo, que cambie la responsabilidad de la que se ocupa. Es esto, precisamente, "_razón para cambiar"_, lo que Robert C. Martin identifica como "responsabilidad".
 
 Las clases con una única responsabilidad son más fáciles de mantener y más fáciles de explicar.
 
 ### Implementación
 
-En el siguiente ejemplo tenemos la clase `Vehicle` que modela un vehículo y sus propiedades y que además tiene la responsabilidad de repostar el vehículo. Por tanto si cambia el modelo `Vehicle` o si cambia la forma de repostar combustible esta clase tendrá dos motivos para cambiar. Esta clase no cumple el **_"Single Responsibility Principle"_**:
+En el siguiente ejemplo tenemos la clase `Vehicle` que modela un vehículo y sus propiedades y que además tiene la responsabilidad de repostar el vehículo. Por tanto si cambia el modelo `Vehicle` o si cambia la forma de repostar combustible esta clase tendrá dos motivos para cambiar, por lo que claramente esta clase no cumple este principio:
 
 ```java
 class Vehicle {
@@ -110,7 +112,7 @@ class Vehicle {
 }
 ```
 
-Para aplicar el **_"Single Responsibility Principle"_** deberemos refactorizar la clase `Vehicle` y crear una clase como por ejemplo `FuelPump` cuya responsabilidad sea el repostaje de combustible del vehículo, eliminando este método de la clase `Vehicle`:
+Para aplicar este principio deberemos refactorizar la clase `Vehicle` y crear una clase como por ejemplo `FuelPump` cuya responsabilidad sea el repostaje de combustible del vehículo, eliminando este método de la clase `Vehicle`:
 
 <!-- markdownlint-disable MD033 -->
 <div style="text-align: center;">
@@ -141,7 +143,7 @@ class FuelPump {
 > _"Software entities (classes, modules, functions, etc...) should be open for extension, but closed for modification"_  
 > -- Robert C. Martin
 
-La idea es escribir código de forma que sea posible añadir nuevas funcionalidades pero sin modificar el código existente. Esto previene situaciones en que al modificar clases base nos veamos obligados también a adaptar todas las clases dependientes.
+La idea es escribir código de forma que sea posible **añadir nuevas funcionalidades pero sin modificar el código existente**. Esto previene situaciones en que al modificar clases base nos veamos obligados también a adaptar todas las clases dependientes.
 
 Inicialmente este principio se basaba en el uso de la herencia pero **Robert C. Martin** y otros autores con el tiempo y la experiencia llegaron a la conclusión que la herencia crea una fuerte dependencia entre las clases. Es recomendable el uso de **interfaces** en lugar de la herencia.
 
@@ -211,7 +213,7 @@ class Vehicle {
 }
 ```
 
-El **_"Open/Closed Principle"_** se incumple ya que si tenemos que añadir un nuevo modo de conducción, deberemos añadir el nuevo modo en la enumeración y además deberemos modificar el método `changeDrivingMode(DrivingMode drivingMode)` para tener en cuenta este nuevo modo.
+El principio se incumple ya que si tenemos que añadir un nuevo modo de conducción, deberemos añadir el nuevo modo en la enumeración y además deberemos modificar el método `changeDrivingMode(DrivingMode drivingMode)` para tener en cuenta este nuevo modo.
 
 Para cumplir este principio deberemos refactorizar el código de forma que el método `changeDrivingMode(DrivingMode drivingMode)` no necesite ser modificado si se añade nueva funcionalidad o nuevos modos de conducción. Por tanto debe permanecer cerrado a la modificación.
 
@@ -228,7 +230,9 @@ interface DrivingMode {
     int getPower();
     int getSuspensionHeight();
 }
+```
 
+```java
 class Comfort implements DrivingMode {
     private static final int POWER = 400;
     private static final int SUSPENSION_HEIGHT = 20;
@@ -243,7 +247,9 @@ class Comfort implements DrivingMode {
         return SUSPENSION_HEIGHT;
     }
 }
+```
 
+```java
 class Sport implements DrivingMode {
     private static final int POWER = 500;
     private static final int SUSPENSION_HEIGHT = 10;
@@ -285,9 +291,9 @@ class EventHandler {
 </div>
 <!-- markdownlint-disable MD033 -->
 
-El **_"Liskov Substitution Principle"_** extiende el **_"Open/Closed Principle"_** pero focalizado en el comportamiento de una superclase y sus subtipos.
+Este principio extiende el **_"Open/Closed Principle"_** pero focalizado en el comportamiento de una superclase y sus subtipos.
 
-Este principio define que los objetos de una superclase deben ser reemplazables por objetos de sus subclases sin "romper" la aplicación o sistema y sin efectos secundarios. Eso requiere que los objetos de las subclases se comporten de la misma manera que los objetos de la superclase de forma que se puedan usar de forma indistinta.
+Este principio define que los **objetos de una superclase deben ser reemplazables por objetos de sus subclases** sin "romper" la aplicación o sistema y sin efectos secundarios. Eso requiere que los objetos de las subclases se comporten de la misma manera que los objetos de la superclase de forma que se puedan usar de forma indistinta.
 
 Para conseguir esto las subclases deberían seguir estas reglas:
 
@@ -296,22 +302,24 @@ Para conseguir esto las subclases deberían seguir estas reglas:
 
 ### Implementación
 
-En el ejemplo tenemos las clases `Duck` y `Ostrich` que heredan de la clase `Bird`:
+En el ejemplo tenemos las clases `Duck` y `Ostrich` que heredan de la clase `Bird` y por tanto también sus métodos. Sin embargo, la clase `Ostrich` sobreescribe el método `fly()` porque no aplica:
 
 ```java
 class Bird {
     void fly() {}
     void eat() {}
 }
+```
 
-class Duck extends Bird {}
-
+```java
 class Ostrich extends Bird {
     void fly(){
         throw new UnsupportedOperationException();
     }
 }
+```
 
+```java
 // ...
 public static void main(String[] args) {
     List<Bird> birdList = new ArrayList<>();
@@ -326,7 +334,9 @@ public static void main(String[] args) {
 }
 ```
 
-Según el **_"Liskov Substitution Principle"_** deberíamos poder utilizar las clases `Duck` y/o `Ostrich` en lugar de la superclase `Bird`. Debido a que no se cumple este principio no se puede usar de forma indistinta la superclase o las subclases sin generar errores en la aplicación ya que la subclase `Ostrich` tiene unas restricciones superiores a la superclase en el método `fly()`. Este método lanza una excepción de tipo `'UnsupportedOperationException'` que no se lanza ni en la otra subclase ni en la superclase. Por tanto no se pueden usar de forma indistinta. Si usamos la subclase `Ostrich` deberemos capturar o relanzar dicha excepción.
+Según este principio deberíamos poder utilizar las clases `Duck` y/o `Ostrich` en lugar de la superclase `Bird`. Debido a que no se cumple este principio no se puede usar de forma indistinta la superclase o las subclases sin generar errores en la aplicación ya que la subclase `Ostrich` tiene unas restricciones superiores a la superclase en el método `fly()`.
+
+Este método lanza una excepción de tipo `'UnsupportedOperationException'` que no se lanza ni en la otra subclase ni en la superclase. Por tanto no se pueden usar de forma indistinta. Si usamos la subclase `Ostrich` deberemos capturar o relanzar dicha excepción.
 
 Para cumplir con este principio refactorizamos la superclase `Bird` y creamos la clase `FlyingBird` que hereda de la clase `Bird`. Movemos el método `fly()` a la subclase correspondiente y la clase `Duck` ahora hereda de la clase `FlyingBrid`. De esta forma podremos usar las subclases y la superclase de forma indistinta.
 
