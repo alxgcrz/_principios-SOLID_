@@ -529,6 +529,12 @@ Para introducir una abstracción que desacople ambas clases creamos la interfaz 
 
 ![Diagrama de clases](https://raw.githubusercontent.com/alxgcrz/_principios-SOLID_/main/code/src/solid/dip/dip_solution_diagram.png)
 
+<!-- markdownlint-disable MD033 -->
+<div style="text-align: center;">
+  <img src="./assets/img/dip_solution_diagram.png" alt="Descripción de la imagen" style="width: 275px; height: auto;">
+</div>
+<!-- markdownlint-disable MD033 -->
+
 ```java
 interface Car {
     void accelerate();
@@ -570,8 +576,12 @@ Este principio está relacionado con el concepto de [inyección de dependencias]
 
 - <https://es.wikipedia.org/wiki/SOLID>  
 - <https://blogs.msdn.microsoft.com/cdndevs/2009/07/15/the-solid-principles-explained-with-motivational-posters/>  
-- <https://profile.es/blog/principios-solid-desarrollo-software-calidad/>  
+- <https://www.baeldung.com/solid-principles>
+- <https://www.baeldung.com/java-single-responsibility-principle>
+- <https://www.baeldung.com/java-open-closed-principle>
 - <https://www.baeldung.com/java-liskov-substitution-principle>  
+- <https://www.baeldung.com/java-interface-segregation>
+- <https://www.baeldung.com/java-dependency-inversion-principle>
 
 ## Licencia
 
