@@ -1,6 +1,10 @@
 # Principios SOLID
 
-![SOLID Principles](https://raw.githubusercontent.com/alxgcrz/_principios-SOLID_/main/code/images/SOLID.png)
+<!-- markdownlint-disable MD033 -->
+<div style="text-align: center;">
+  <img src="./assets/img/SOLID.png" alt="solid_principles" style="width: 525px; height: auto;">
+</div>
+<!-- markdownlint-disable MD033 -->
 
 SOLID es el acrónimo que acuñó **Michael Feathers**, basándose en los principios de la programación orientada a objetos que **Robert C. Martin** había recopilado en el año 2000 en su paper ["_Design Principles and Design Patterns_"](http://www.cvc.uab.es/shared/teach/a21291/temes/object_oriented_design/materials_adicionals/principles_and_patterns.pdf).
 
@@ -26,7 +30,11 @@ Como indica el propio Robert C. Martin en su artículo “_Getting a SOLID start
 
 Dice el _tío Bob_, que SOLID nos ayuda a categorizar lo que es un buen o mal código y es innegable que un código limpio tenderá más a salir airoso del “control de calidad de código WTFs/Minute":
 
-![WTFs/Minute](https://raw.githubusercontent.com/alxgcrz/_principios-SOLID_/main/code/images/code-quality-measurement-WTF.png)
+<!-- markdownlint-disable MD033 -->
+<div style="text-align: center;">
+  <img src="./assets/img/code-quality-measurement-WTF.png" alt="code-quality-measurement" style="width: 525px; height: auto; border-radius: 10px;">
+</div>
+<!-- markdownlint-disable MD033 -->
 
 Los 5 principios SOLID son:
 
@@ -56,7 +64,11 @@ Los 5 principios SOLID son:
 
 ## "Single Responsibility Principle"
 
-![SRP](https://raw.githubusercontent.com/alxgcrz/_principios-SOLID_/main/code/images/single_responsibility_principle_thumb.jpg)
+<!-- markdownlint-disable MD033 -->
+<div style="text-align: center;">
+  <img src="./assets/img/single_responsibility_principle_thumb.jpg" alt="single_responsibility_principle" style="width: 525px; height: auto; border-radius: 15px;">
+</div>
+<!-- markdownlint-disable MD033 -->
 
 > _"A class should have one, and only one, reason to change"_  
 > -- Robert C. Martin
@@ -100,7 +112,11 @@ class Vehicle {
 
 Para aplicar el **_"Single Responsibility Principle"_** deberemos refactorizar la clase `Vehicle` y crear una clase como por ejemplo `FuelPump` cuya responsabilidad sea el repostaje de combustible del vehículo, eliminando este método de la clase `Vehicle`:
 
-![Diagrama de clases](https://raw.githubusercontent.com/alxgcrz/_principios-SOLID_/main/code/src/solid/srp/srp_solution_diagram.png)
+<!-- markdownlint-disable MD033 -->
+<div style="text-align: center;">
+  <img src="./assets/img/diagrams/srp/srp_solution_diagram.png" alt="srp_solution_diagram" style="width: auto; height: auto; border-radius: 10px;">
+</div>
+<!-- markdownlint-disable MD033 -->
 
 Quedando la nueva clase de esta forma:
 
@@ -116,7 +132,11 @@ class FuelPump {
 
 ## "Open/Closed Principle"
 
-![OCP](https://raw.githubusercontent.com/alxgcrz/_principios-SOLID_/main/code/images/openclosed_principle_thumb.jpg)
+<!-- markdownlint-disable MD033 -->
+<div style="text-align: center;">
+  <img src="./assets/img/open_closed_principle_thumb.jpg" alt="open_closed_principle" style="width: 525px; height: auto; border-radius: 15px;">
+</div>
+<!-- markdownlint-disable MD033 -->
 
 > _"Software entities (classes, modules, functions, etc...) should be open for extension, but closed for modification"_  
 > -- Robert C. Martin
@@ -197,7 +217,11 @@ Para cumplir este principio deberemos refactorizar el código de forma que el m�
 
 Esto lo podemos conseguir haciendo uso de las **interfaces** (en vez del uso de la herencia) de modo que en el método `changeDrivingMode(DrivingMode drivingMode)` utilicemos la interfaz `DrivingMode`. Las clases que modelan los modos de conducción implementarán dicha interfaz. Si en el futuro necesitamos añadir un nuevo modo de conducción únicamente será necesario añadir la nueva clase que implemente la interfaz `DrivingMode` para que el sistema tenga en cuenta el nuevo modo. El método `changeDrivingMode(DrivingMode drivingMode)` permanecerá inalterado y plenamente funcional ya que este método hace uso de la interfaz y ésta no se ha modificado.
 
-![Diagrama de clases](https://raw.githubusercontent.com/alxgcrz/_principios-SOLID_/main/code/src/solid/ocp/ocp_solution_diagram.png)
+<!-- markdownlint-disable MD033 -->
+<div style="text-align: center;">
+  <img src="./assets/img/diagrams/ocp/ocp_solution_diagram.png" alt="ocp_solution_diagram" style="width: auto; height: auto; border-radius: 10px;">
+</div>
+<!-- markdownlint-disable MD033 -->
 
 ```java
 interface DrivingMode {
@@ -255,7 +279,11 @@ class EventHandler {
 
 ## "Liskov Substitution Principle"
 
-![LSP](https://raw.githubusercontent.com/alxgcrz/_principios-SOLID_/main/code/images/liskov_substitution_principle_thumb.jpg)
+<!-- markdownlint-disable MD033 -->
+<div style="text-align: center;">
+  <img src="./assets/img/liskov_substitution_principle_thumb.jpg" alt="liskov_substitution_principle" style="width: 525px; height: auto; border-radius: 15px;">
+</div>
+<!-- markdownlint-disable MD033 -->
 
 El **_"Liskov Substitution Principle"_** extiende el **_"Open/Closed Principle"_** pero focalizado en el comportamiento de una superclase y sus subtipos.
 
@@ -304,7 +332,11 @@ Para cumplir con este principio refactorizamos la superclase `Bird` y creamos la
 
 Podremos usar el método `fly()` independientemente de que tengamos un objeto de tipo `Duck` o `FlyingBird` y podremos usar el método `eat()` independientemente de que tengamos un objeto de tipo `Bird`, `Ostrich`, `Duck` o `FlyingBird`.
 
-![Diagrama de clases](https://raw.githubusercontent.com/alxgcrz/_principios-SOLID_/main/code/src/solid/lsp/lsp_solution_diagram.png)
+<!-- markdownlint-disable MD033 -->
+<div style="text-align: center;">
+  <img src="./assets/img/diagrams/lsp/lsp_solution_diagram.png" alt="lsp_solution_diagram" style="width: auto; height: auto; border-radius: 10px;">
+</div>
+<!-- markdownlint-disable MD033 -->
 
 ```java
 class Bird {
@@ -345,7 +377,11 @@ public static void main(String[] args) {
 
 ## "Interface Segregation Principle"
 
-![ISP](https://raw.githubusercontent.com/alxgcrz/_principios-SOLID_/main/code/images/interface_segregation_principle_thumb.jpg)
+<!-- markdownlint-disable MD033 -->
+<div style="text-align: center;">
+  <img src="./assets/img/interface_segregation_principle_thumb.jpg" alt="interface_segregation_principle" style="width: 525px; height: auto; border-radius: 15px;">
+</div>
+<!-- markdownlint-disable MD033 -->
 
 > _"Clients should not be forced to depend upon interfaces that they do not use"_  
 > -- Robert C. Martin
@@ -358,7 +394,11 @@ Al seguir este principio se evitan interfaces infladas que definen métodos para
 
 En el ejemplo tenemos las subclases `Drone` y `Car` que implementan la interfaz `Switches`.
 
-![Diagrama de clases](https://raw.githubusercontent.com/alxgcrz/_principios-SOLID_/main/code/src/solid/isp/isp_violation_diagram.png)
+<!-- markdownlint-disable MD033 -->
+<div style="text-align: center;">
+  <img src="./assets/img/diagrams/isp/isp_violation_diagram.png" alt="isp_violation_diagram" style="width: auto; height: auto; border-radius: 10px;">
+</div>
+<!-- markdownlint-disable MD033 -->
 
 ```java
 interface Switches {
@@ -424,7 +464,11 @@ En este ejemplo las subclases, debido a la herencia, se ven obligadas a implemen
 
 Para cumplir con el **_"Interface Segregation Principle"_** debemos refactorizar el código de forma que en vez de tener una única interfaz con demasiada responsabilidad tengamos tres interfaces con menor responsabilidad y que se adapten mejor a nuestro modelo y a la lógica de negocio.
 
-![Diagrama de clases ](https://raw.githubusercontent.com/alxgcrz/_principios-SOLID_/main/code/src/solid/isp/isp_solution_diagram.png)
+<!-- markdownlint-disable MD033 -->
+<div style="text-align: center;">
+  <img src="./assets/img/diagrams/isp/isp_solution_diagram.png" alt="isp_solution_diagram" style="width: auto; height: auto; border-radius: 10px;">
+</div>
+<!-- markdownlint-disable MD033 -->
 
 ```java
 interface EngineSwitch {
@@ -476,7 +520,11 @@ Ahora la subclase `Drone` implementa la interfaz `CameraSwitch` y la subclase `C
 
 ## "Dependency Inversion Principle"
 
-![DIP](https://raw.githubusercontent.com/alxgcrz/_principios-SOLID_/main/code/images/dependency_inversion_principle_thumb.jpg)
+<!-- markdownlint-disable MD033 -->
+<div style="text-align: center;">
+  <img src="./assets/img/dependency_inversion_principle_thumb.jpg" alt="dependency_inversion_principle" style="width: 525px; height: auto; border-radius: 15px;">
+</div>
+<!-- markdownlint-disable MD033 -->
 
 La idea general de este principio es tan simple como importante: los módulos de alto nivel, que brindan una lógica compleja, deben ser fácilmente reutilizables y no verse afectados por los cambios en los módulos de bajo nivel, que brindan funciones de utilidad. Para lograr eso, se deben introducir una abstracción que desacople los módulos de alto y bajo nivel entre sí.
 
@@ -527,11 +575,9 @@ class Driver {
 
 Para introducir una abstracción que desacople ambas clases creamos la interfaz `Car` de forma que la clase `Driver` en su constructor recibirá un objeto que implementa dicha interfaz. En el ejemplo la clase `RacingCar` implementa dicha interfaz pero si hemos aplicado correctamente los otros principios podremos utilizar otras implementaciones y ampliar la funcionalidad del sistema sin que se produzcan errores.
 
-![Diagrama de clases](https://raw.githubusercontent.com/alxgcrz/_principios-SOLID_/main/code/src/solid/dip/dip_solution_diagram.png)
-
 <!-- markdownlint-disable MD033 -->
 <div style="text-align: center;">
-  <img src="./assets/img/dip_solution_diagram.png" alt="Descripción de la imagen" style="width: 275px; height: auto;">
+  <img src="./assets/img/diagrams/dip/dip_solution_diagram.png" alt="dip_solution_diagram" style="width: auto; height: auto; border-radius: 10px;">
 </div>
 <!-- markdownlint-disable MD033 -->
 
