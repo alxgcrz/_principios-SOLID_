@@ -349,18 +349,24 @@ Podremos usar el método `fly()` independientemente de que tengamos un objeto de
 <!-- markdownlint-disable MD033 -->
 
 ```java
+// Bird.java
 class Bird {
     void eat() {}
 }
 
+// Ostrich.java
 class Ostrich extends Bird { }
 
+// FlyingBird.java
 public class FlyingBird extends Bird {
     void fly() {}
 }
 
+// Duck.java
 public class Duck extends FlyingBird { }
+```
 
+```java
 // ...
 public static void main(String[] args) {
     List<Bird> birdList = new ArrayList<>();
@@ -411,6 +417,7 @@ En el ejemplo tenemos las subclases `Drone` y `Car` que implementan la interfaz 
 <!-- markdownlint-disable MD033 -->
 
 ```java
+// Switches.java
 interface Switches {
     void startEngine();
     void turnRadioOn();
@@ -419,6 +426,7 @@ interface Switches {
     void turnCameraOff();
 }
 
+// Car.java
 class Car implements Switches {
     private boolean radioOn;
 
@@ -444,6 +452,7 @@ class Car implements Switches {
     }
 }
 
+// Drone.java
 class Drone implements Switches {
     private boolean cameraOn;
 
@@ -472,7 +481,7 @@ class Drone implements Switches {
 
 En este ejemplo las subclases, debido a la herencia, se ven obligadas a implementar con un cuerpo vacío los métodos que no les son necesarios. La subclase `Car` se ve obligada a implementar los métodos `turnCameraOn()` y `turnCameraOff()` que son más propios de la subclase `Dron` y pasa lo mismo con los métodos `turnRadioOn()` y `turnRadioOff()`.
 
-Para cumplir con el **_"Interface Segregation Principle"_** debemos refactorizar el código de forma que en vez de tener una única interfaz con demasiada responsabilidad tengamos tres interfaces con menor responsabilidad y que se adapten mejor a nuestro modelo y a la lógica de negocio.
+Para cumplir con este principio debemos refactorizar el código de forma que en vez de tener una única interfaz con demasiada responsabilidad tengamos tres interfaces con menor responsabilidad y que se adapten mejor a nuestro modelo y a la lógica de negocio.
 
 <!-- markdownlint-disable MD033 -->
 <div style="text-align: center;">
@@ -481,20 +490,26 @@ Para cumplir con el **_"Interface Segregation Principle"_** debemos refactorizar
 <!-- markdownlint-disable MD033 -->
 
 ```java
+// EngineSwitch.java
 interface EngineSwitch {
     void startEngine();
 }
 
+// CameraSwitch.java
 interface CameraSwitch extends EngineSwitch {
     void turnCameraOn();
     void turnCameraOff();
 }
 
+// RadioSwitch
 interface RadioSwitch extends EngineSwitch {
     void turnRadioOn();
     void turnRadioOff();
 }
+```
 
+```java
+// Car.java
 class Car implements RadioSwitch {
     private boolean radioOn;
 
@@ -510,6 +525,7 @@ class Car implements RadioSwitch {
     public void turnRadioOff() { radioOn = false; }
 }
 
+// Drone.java
 class Drone implements CameraSwitch {
     private boolean cameraOn;
 
@@ -536,7 +552,9 @@ Ahora la subclase `Drone` implementa la interfaz `CameraSwitch` y la subclase `C
 </div>
 <!-- markdownlint-disable MD033 -->
 
-La idea general de este principio es tan simple como importante: los módulos de alto nivel, que brindan una lógica compleja, deben ser fácilmente reutilizables y no verse afectados por los cambios en los módulos de bajo nivel, que brindan funciones de utilidad. Para lograr eso, se deben introducir una abstracción que desacople los módulos de alto y bajo nivel entre sí.
+La idea general de este principio es tan simple como importante: los módulos de alto nivel, que brindan una lógica compleja, deben ser fácilmente reutilizables y no verse afectados por los cambios en los módulos de bajo nivel, que brindan funciones de utilidad.
+
+Para lograr eso, se deben introducir **una abstracción que desacople los módulos de alto y bajo nivel entre sí**.
 
 La definición de este principio según **Robert C. Martin** consta de dos partes:
 
@@ -556,6 +574,7 @@ Sus implementaciones deben seguir el **_"Liskov Substitution Principle"_** para 
 En el ejemplo tenemos la clase `Driver` que tiene una dependencia con la clase `RacingCar` ya que en su constructor se instancia un objeto de la clase `RacingCar`:
 
 ```java
+// RacingCar.java
 class RacingCar {
     private int remainingFuel;
     private int power;
@@ -570,6 +589,7 @@ class RacingCar {
     }
 }
 
+// Driver.java
 class Driver {
     private RacingCar racingCar;
 
@@ -592,10 +612,12 @@ Para introducir una abstracción que desacople ambas clases creamos la interfaz 
 <!-- markdownlint-disable MD033 -->
 
 ```java
+// Car.java
 interface Car {
     void accelerate();
 }
 
+// RacingCar.java
 class RacingCar implements Car {
     private int remainingFuel;
     private int power;
@@ -611,6 +633,7 @@ class RacingCar implements Car {
     }
 }
 
+// Driver.java
 class Driver {
     private Car racingCar;
 
