@@ -64,12 +64,6 @@ Los 5 principios SOLID son:
 
 ## "Single Responsibility Principle"
 
-<!-- markdownlint-disable MD033 -->
-<div style="text-align: center;">
-  <img src="./assets/img/single_responsibility_principle_thumb.jpg" alt="single_responsibility_principle" style="width: 525px; height: auto; border-radius: 15px;">
-</div>
-<!-- markdownlint-disable MD033 -->
-
 > _"A class should have one, and only one, reason to change"_  
 > -- Robert C. Martin
 
@@ -77,13 +71,21 @@ Este principio ayuda a crear código de calidad, mantenible, reusable, testeable
 
 Los requerimientos del código pueden cambiar con el tiempo. Cada uno de estos cambios en los requerimientos modifica al menos la responsabilidad de una clase. Si una clase tiene muchas responsabilidades deberá cambiar más a menudo que si sólo tuviera una responsabilidad.
 
-Estos cambios tan reiterados pueden introducir errores o efectos secundarios en otras partes del código. Por tanto, **una clase sólo debería cambiar por una única razón** o lo que es lo mismo, que cambie la responsabilidad de la que se ocupa. Es esto, precisamente, "_razón para cambiar"_, lo que Robert C. Martin identifica como "responsabilidad".
+Estos cambios tan reiterados pueden introducir errores o efectos secundarios en otras partes del código. Por tanto, **una clase sólo debería cambiar por una única razón** o lo que es lo mismo, que cambie la responsabilidad de la que se ocupa. Es esto, precisamente, "_razón para cambiar"_, lo que Robert C. Martin identifica como **"responsabilidad"**.
 
-Las clases con una única responsabilidad son más fáciles de mantener y más fáciles de explicar.
+Las clases con una única responsabilidad son más fáciles de mantener y menos propensas a errores.
 
 ### Implementación
 
-En el siguiente ejemplo tenemos la clase `Vehicle` que modela un vehículo y sus propiedades y que además tiene la responsabilidad de repostar el vehículo. Por tanto si cambia el modelo `Vehicle` o si cambia la forma de repostar combustible esta clase tendrá dos motivos para cambiar, por lo que claramente esta clase no cumple este principio:
+En el siguiente ejemplo la clase `Vehicle` modela un vehículo y sus propiedades. Además tiene la responsabilidad de repostar el vehículo.
+
+Por tanto, si cambia el modelo o si cambia la forma de repostar combustible esta clase tendrá **dos** motivos para cambiar, es decir, ser modificada por lo que esta clase no estaría cumpliendo este principio:
+
+<!-- markdownlint-disable MD033 -->
+<div style="text-align: center;">
+  <img src="./assets/img/diagrams/srp/srp_violation_diagram.png" alt="srp_violation_diagram" style="width: auto; height: auto; border-radius: 10px;">
+</div>
+<!-- markdownlint-disable MD033 -->
 
 ```java
 class Vehicle {
@@ -112,15 +114,7 @@ class Vehicle {
 }
 ```
 
-Para aplicar este principio deberemos refactorizar la clase `Vehicle` y crear una clase como por ejemplo `FuelPump` cuya responsabilidad sea el repostaje de combustible del vehículo, eliminando este método de la clase `Vehicle`:
-
-<!-- markdownlint-disable MD033 -->
-<div style="text-align: center;">
-  <img src="./assets/img/diagrams/srp/srp_solution_diagram.png" alt="srp_solution_diagram" style="width: auto; height: auto; border-radius: 10px;">
-</div>
-<!-- markdownlint-disable MD033 -->
-
-Quedando la nueva clase de esta forma:
+Para aplicar este principio deberemos refactorizar la clase `Vehicle` y crear una clase responsable del respostaje del vehículo como por ejemplo `FuelPump`:
 
 ```java
 class FuelPump {
@@ -132,28 +126,38 @@ class FuelPump {
 }
 ```
 
-## "Open/Closed Principle"
+Eliminando este método de la clase `Vehicle` eliminamos la doble responsabilidad que tenía.
 
 <!-- markdownlint-disable MD033 -->
 <div style="text-align: center;">
-  <img src="./assets/img/open_closed_principle_thumb.jpg" alt="open_closed_principle" style="width: 525px; height: auto; border-radius: 15px;">
+  <img src="./assets/img/diagrams/srp/srp_solution_diagram.png" alt="srp_solution_diagram" style="width: auto; height: auto; border-radius: 10px;">
 </div>
 <!-- markdownlint-disable MD033 -->
+
+## "Open/Closed Principle"
 
 > _"Software entities (classes, modules, functions, etc...) should be open for extension, but closed for modification"_  
 > -- Robert C. Martin
 
 La idea es escribir código de forma que sea posible **añadir nuevas funcionalidades pero sin modificar el código existente**. Esto previene situaciones en que al modificar clases base nos veamos obligados también a adaptar todas las clases dependientes.
 
-Inicialmente este principio se basaba en el uso de la herencia pero **Robert C. Martin** y otros autores con el tiempo y la experiencia llegaron a la conclusión que la herencia crea una fuerte dependencia entre las clases. Es recomendable el uso de **interfaces** en lugar de la herencia.
+Inicialmente este principio se basaba en el uso de la herencia pero **Robert C. Martin** y otros autores, basándose en su experiencia llegaron a la conclusión de que la herencia crea una fuerte dependencia entre las clases. Por tanto la recomendación es el **uso de interfaces en lugar de la herencia**.
 
-El mayor beneficio es que las interfaces introducen una capa extra de abstracción que otorga un bajo nivel de acoplamiento. Las implementaciones que hace cada clase de esa interfaz son independientes unas de otras y no necesitan compartir el código.
+El mayor beneficio es que las interfaces introducen una capa extra de abstracción que otorga un bajo nivel de acoplamiento. La implementación que hace cada clase de esa interfaz son independientes unas de otras y no necesitan compartir el código.
 
-En el caso de que los beneficios de compartir código fueran notables sería mejor optar por la herencia o la composición.
+Sin embargo, en el caso de que los beneficios de compartir código fueran notables sería mejor optar por la herencia o la composición.
 
 ### Implementación
 
-En el siguiente ejemplo tenemos la clase `EventHandler` con el método `changeDrivingMode()` que permite cambiar ciertos parámetros de la clase `Vehicle` según el modo de conducción. Este modo de conducción se codifica en una enumeración:
+En el siguiente ejemplo la clase `Vehicle` modela un vehículo y sus propiedades. Por otro lado, la clase `EventHandler` con el método `changeDrivingMode(...)` permite cambiar ciertos parámetros según el modo de conducción:
+
+<!-- markdownlint-disable MD033 -->
+<div style="text-align: center;">
+  <img src="./assets/img/diagrams/ocp/ocp_violation_diagram.png" alt="ocp_violation_diagram" style="width: auto; height: auto; border-radius: 10px;">
+</div>
+<!-- markdownlint-disable MD033 -->
+
+Este modo de conducción se codifica en una enumeración. Una posible implemetación sería:
 
 ```java
 class EventHandler {
@@ -213,11 +217,15 @@ class Vehicle {
 }
 ```
 
-El principio se incumple ya que si tenemos que añadir un nuevo modo de conducción, deberemos añadir el nuevo modo en la enumeración y además deberemos modificar el método `changeDrivingMode(DrivingMode drivingMode)` para tener en cuenta este nuevo modo.
+El principio se incumple ya que si tenemos que añadir un nuevo modo de conducción, deberemos añadir el nuevo modo en la enumeración y además deberemos modificar el método `changeDrivingMode(...)` para tener en cuenta este nuevo modo. Por tanto, al añadir nueva funcionalidad estamos obligados a modificar el código existente.
 
-Para cumplir este principio deberemos refactorizar el código de forma que el método `changeDrivingMode(DrivingMode drivingMode)` no necesite ser modificado si se añade nueva funcionalidad o nuevos modos de conducción. Por tanto debe permanecer cerrado a la modificación.
+Además, si esta modificación se tuviera que hacer en varias partes del código, en caso de "despiste" por parte del programador, se producirían errores que son complicados de detectar.
 
-Esto lo podemos conseguir haciendo uso de las **interfaces** (en vez del uso de la herencia) de modo que en el método `changeDrivingMode(DrivingMode drivingMode)` utilicemos la interfaz `DrivingMode`. Las clases que modelan los modos de conducción implementarán dicha interfaz. Si en el futuro necesitamos añadir un nuevo modo de conducción únicamente será necesario añadir la nueva clase que implemente la interfaz `DrivingMode` para que el sistema tenga en cuenta el nuevo modo. El método `changeDrivingMode(DrivingMode drivingMode)` permanecerá inalterado y plenamente funcional ya que este método hace uso de la interfaz y ésta no se ha modificado.
+Para cumplir este principio deberemos refactorizar el código de forma que el método `changeDrivingMode(...)` no necesite ser modificado si se añade nueva funcionalidad o nuevos modos de conducción. **Este método debe permanecer cerrado a la modificación**.
+
+Se puede alcanzar haciendo uso de las **interfaces** (en vez del uso de la herencia) de forma que en el método `changeDrivingMode(...)` utilice la nueva interfaz `DrivingMode`. Las clases que modelan los modos de conducción implementarán dicha interfaz.
+
+Si en el futuro se necesita añadir un nuevo modo de conducción únicamente será necesario añadir la nueva clase que representa el modo de conducción y que implementa la interfaz `DrivingMode` para que el sistema tenga en cuenta el nuevo modo. El método `changeDrivingMode(...)` permanecerá inalterado y plenamente funcional ya que este método hace uso de la interfaz y ésta no se ha modificado.
 
 <!-- markdownlint-disable MD033 -->
 <div style="text-align: center;">
@@ -285,15 +293,9 @@ class EventHandler {
 
 ## "Liskov Substitution Principle"
 
-<!-- markdownlint-disable MD033 -->
-<div style="text-align: center;">
-  <img src="./assets/img/liskov_substitution_principle_thumb.jpg" alt="liskov_substitution_principle" style="width: 525px; height: auto; border-radius: 15px;">
-</div>
-<!-- markdownlint-disable MD033 -->
-
 Este principio extiende el **_"Open/Closed Principle"_** pero focalizado en el comportamiento de una superclase y sus subtipos.
 
-Este principio define que los **objetos de una superclase deben ser reemplazables por objetos de sus subclases** sin "romper" la aplicación o sistema y sin efectos secundarios. Eso requiere que los objetos de las subclases se comporten de la misma manera que los objetos de la superclase de forma que se puedan usar de forma indistinta.
+Este principio define que los **objetos de una superclase deben ser reemplazables por objetos de sus subclases** sin "romper" la aplicación o sistema y sin efectos secundarios. Eso requiere que los objetos de las subclases se comporten de la misma manera que los objetos de la superclase de forma que se puedan usar de forma **indistinta**.
 
 Para conseguir esto las subclases deberían seguir estas reglas:
 
@@ -302,9 +304,16 @@ Para conseguir esto las subclases deberían seguir estas reglas:
 
 ### Implementación
 
-En el ejemplo tenemos las clases `Duck` y `Ostrich` que heredan de la clase `Bird` y por tanto también sus métodos. Sin embargo, la clase `Ostrich` sobreescribe el método `fly()` porque no aplica:
+En el ejemplo las clases `Duck` y `Ostrich` heredan de la clase base `Bird` y por tanto también sus métodos. Sin embargo, la clase `Ostrich` sobreescribe el método `fly()` porque no aplica:
+
+<!-- markdownlint-disable MD033 -->
+<div style="text-align: center;">
+  <img src="./assets/img/diagrams/lsp/lsp_violation_diagram.png" alt="lsp_violation_diagram" style="width: auto; height: auto; border-radius: 10px;">
+</div>
+<!-- markdownlint-disable MD033 -->
 
 ```java
+// Bird.java
 class Bird {
     void fly() {}
     void eat() {}
@@ -312,6 +321,12 @@ class Bird {
 ```
 
 ```java
+// Duck.java
+class Duck extends Bird { }
+```
+
+```java
+// Ostrich.java
 class Ostrich extends Bird {
     void fly(){
         throw new UnsupportedOperationException();
@@ -319,28 +334,13 @@ class Ostrich extends Bird {
 }
 ```
 
-```java
-// ...
-public static void main(String[] args) {
-    List<Bird> birdList = new ArrayList<>();
-    birdList.add(new Bird());
-    birdList.add(new Duck());
-    birdList.add(new Ostrich());
+Según este principio se debería poder utilizar las subclases `Duck` y/o `Ostrich` en lugar de la superclase `Bird`. Debido a que no se cumple este principio no se puede usar de forma indistinta la superclase o las subclases sin generar errores en la aplicación.
 
-    // Let the birds fly
-    for (Bird b : birdList) {
-        b.fly();
-    }
-}
-```
+La subclase `Ostrich` tiene unas restricciones superiores a la superclase en el método `fly()` debido a que lanza una excepción de tipo `'UnsupportedOperationException'` que no se lanza ni en la otra subclase ni en la superclase. No se pueden usar de forma indistinta ya que si se usa esta subclase se deberá capturar o relanzar dicha excepción.
 
-Según este principio deberíamos poder utilizar las clases `Duck` y/o `Ostrich` en lugar de la superclase `Bird`. Debido a que no se cumple este principio no se puede usar de forma indistinta la superclase o las subclases sin generar errores en la aplicación ya que la subclase `Ostrich` tiene unas restricciones superiores a la superclase en el método `fly()`.
+Para cumplir con este principio se refactoriza la superclase `Bird` y se crea la clase `FlyingBird` que heredará de esta superclase. El método `fly()` se mueve a la subclase correspondiente y la clase `Duck` pasa a heredar de la clase `FlyingBrid`. De esta forma se puede utilizar las subclases y la superclase de forma indistinta.
 
-Este método lanza una excepción de tipo `'UnsupportedOperationException'` que no se lanza ni en la otra subclase ni en la superclase. Por tanto no se pueden usar de forma indistinta. Si usamos la subclase `Ostrich` deberemos capturar o relanzar dicha excepción.
-
-Para cumplir con este principio refactorizamos la superclase `Bird` y creamos la clase `FlyingBird` que hereda de la clase `Bird`. Movemos el método `fly()` a la subclase correspondiente y la clase `Duck` ahora hereda de la clase `FlyingBrid`. De esta forma podremos usar las subclases y la superclase de forma indistinta.
-
-Podremos usar el método `fly()` independientemente de que tengamos un objeto de tipo `Duck` o `FlyingBird` y podremos usar el método `eat()` independientemente de que tengamos un objeto de tipo `Bird`, `Ostrich`, `Duck` o `FlyingBird`.
+El método `fly()` podrá ser invocado independientemente de que tengamos un objeto de tipo `Duck` o `FlyingBird` y a su vez el método `eat()` podrá ser invocado independientemente de que tengamos un objeto de tipo `Bird`, `Ostrich`, `Duck` o `FlyingBird`.
 
 <!-- markdownlint-disable MD033 -->
 <div style="text-align: center;">
@@ -366,38 +366,7 @@ public class FlyingBird extends Bird {
 public class Duck extends FlyingBird { }
 ```
 
-```java
-// ...
-public static void main(String[] args) {
-    List<Bird> birdList = new ArrayList<>();
-    birdList.add(new Bird());
-    birdList.add(new Ostrich());
-    birdList.add(new Duck());
-    birdList.add(new FlyingBird());
-
-    // Let the birds eat
-    for (Bird b : birdList) {
-        b.eat();
-    }
-
-    List<FlyingBird> flyingBirdList = new ArrayList<>();
-    flyingBirdList.add(new Duck());
-    flyingBirdList.add(new FlyingBird());
-
-    // Let the flying birds fly
-    for (FlyingBird b : flyingBirdList) {
-        b.fly();
-    }
-}
-```
-
 ## "Interface Segregation Principle"
-
-<!-- markdownlint-disable MD033 -->
-<div style="text-align: center;">
-  <img src="./assets/img/interface_segregation_principle_thumb.jpg" alt="interface_segregation_principle" style="width: 525px; height: auto; border-radius: 15px;">
-</div>
-<!-- markdownlint-disable MD033 -->
 
 > _"Clients should not be forced to depend upon interfaces that they do not use"_  
 > -- Robert C. Martin
@@ -408,7 +377,7 @@ Al seguir este principio se evitan interfaces infladas que definen métodos para
 
 ### Implementación
 
-En el ejemplo tenemos las subclases `Drone` y `Car` que implementan la interfaz `Switches`.
+En el ejemplo las subclases `Drone` y `Car` modelan diferntes tipos de vehículos y además implementan la interfaz `Switches`:
 
 <!-- markdownlint-disable MD033 -->
 <div style="text-align: center;">
@@ -479,9 +448,9 @@ class Drone implements Switches {
 }
 ```
 
-En este ejemplo las subclases, debido a la herencia, se ven obligadas a implementar con un cuerpo vacío los métodos que no les son necesarios. La subclase `Car` se ve obligada a implementar los métodos `turnCameraOn()` y `turnCameraOff()` que son más propios de la subclase `Dron` y pasa lo mismo con los métodos `turnRadioOn()` y `turnRadioOff()`.
+Las subclases, debido a la herencia, se ven obligadas a implementar con un cuerpo vacío los métodos que no les son necesarios. La subclase `Car` se ve obligada a implementar los métodos `turnCameraOn()` y `turnCameraOff()` que son más propios de la subclase `Dron` y al revés.
 
-Para cumplir con este principio debemos refactorizar el código de forma que en vez de tener una única interfaz con demasiada responsabilidad tengamos tres interfaces con menor responsabilidad y que se adapten mejor a nuestro modelo y a la lógica de negocio.
+Para cumplir con este principio se debe refactorizar el código de forma que en vez de tener una única interfaz con demasiada responsabilidad, haya tres interfaces con menor responsabilidad y que se adapten mejor al modelo y a la lógica de negocio.
 
 <!-- markdownlint-disable MD033 -->
 <div style="text-align: center;">
@@ -542,15 +511,7 @@ class Drone implements CameraSwitch {
 }
 ```
 
-Ahora la subclase `Drone` implementa la interfaz `CameraSwitch` y la subclase `Car` implementa la interfaz `RadioSwitch`. Ambas interfaces heredan de la interfaz común `EngineSwitch`.
-
 ## "Dependency Inversion Principle"
-
-<!-- markdownlint-disable MD033 -->
-<div style="text-align: center;">
-  <img src="./assets/img/dependency_inversion_principle_thumb.jpg" alt="dependency_inversion_principle" style="width: 525px; height: auto; border-radius: 15px;">
-</div>
-<!-- markdownlint-disable MD033 -->
 
 La idea general de este principio es tan simple como importante: los módulos de alto nivel, que brindan una lógica compleja, deben ser fácilmente reutilizables y no verse afectados por los cambios en los módulos de bajo nivel, que brindan funciones de utilidad.
 
@@ -571,7 +532,13 @@ Sus implementaciones deben seguir el **_"Liskov Substitution Principle"_** para 
 
 ### Implementación
 
-En el ejemplo tenemos la clase `Driver` que tiene una dependencia con la clase `RacingCar` ya que en su constructor se instancia un objeto de la clase `RacingCar`:
+En el ejemplo la clase `Driver` tiene una dependencia con la clase `RacingCar` ya que en su constructor se instancia un objeto de esta clase:
+
+<!-- markdownlint-disable MD033 -->
+<div style="text-align: center;">
+  <img src="./assets/img/diagrams/dip/dip_violation_diagram.png" alt="dip_violation_diagram" style="width: auto; height: auto; border-radius: 10px;">
+</div>
+<!-- markdownlint-disable MD033 -->
 
 ```java
 // RacingCar.java
@@ -603,7 +570,9 @@ class Driver {
 }
 ```
 
-Para introducir una abstracción que desacople ambas clases creamos la interfaz `Car` de forma que la clase `Driver` en su constructor recibirá un objeto que implementa dicha interfaz. En el ejemplo la clase `RacingCar` implementa dicha interfaz pero si hemos aplicado correctamente los otros principios podremos utilizar otras implementaciones y ampliar la funcionalidad del sistema sin que se produzcan errores.
+Para introducir una abstracción que desacople ambas clases se crea la interfaz `Car` de forma que la clase `Driver` en su constructor recibirá un objeto que implementa dicha interfaz.
+
+En el ejemplo la clase `RacingCar` implementa dicha interfaz. Si se han aplicado correctamente los otros principios se podrá utilizar otras implementaciones y/o ampliar la funcionalidad del sistema sin que se produzcan errores.
 
 <!-- markdownlint-disable MD033 -->
 <div style="text-align: center;">
