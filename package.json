@@ -9,10 +9,10 @@
   "homepage": "https://alxgcrz.com/solid.html",
   "scripts": {
     "pandoc:create": "pandoc -d custom",
-    "pandoc:copy": "copy *.html %npm_config_html%",
+    "pandoc:copy": "copy %npm_config_filename% %npm_config_html%",
     "pdf:create": "mdpdf README.md README.pdf",
     "pdf:copy": "copy README.pdf %npm_config_pdf%",
-    "live": "live-server solid.html"
+    "live": "live-server %npm_config_filename%"
   },
   "repository": {
     "type": "git",
