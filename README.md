@@ -13,14 +13,14 @@ Ocho años más tarde, el _tío Bob_ siguió compendiando consejos y buenas prá
 Entre los objetivos a alcanzar si tenemos en cuenta estos 5 principios a la hora de escribir código encontramos:
 
 - Crear un **software eficaz** que cumpla con su cometido y que sea **robusto y estable**.
+
 - Escribir un **código limpio y flexible** ante los cambios, lo que significa que se pueda modificar fácilmente según necesidad, que sea **reutilizable y mantenible**.
+
 - Permitir **escalabilidad**, o lo que es lo mismo, que acepte ser ampliado con nuevas funcionalidades de manera ágil.
 
 En  este sentido la aplicación de los principios SOLID está muy relacionada con la comprensión y el uso de **patrones de diseño**, que nos permitirán mantener una **alta cohesión** y, por tanto, un **bajo acoplamiento** de software. En definitiva, desarrollar un software de calidad.
 
-El acoplamiento se refiere al **grado de interdependencia que tienen dos unidades de software entre sí**, entendiendo por unidades de software: clases, subtipos, métodos, módulos, funciones, bibliotecas, etc.
-
-Si dos unidades de software son completamente independientes la una de la otra, decimos que están **desacopladas**.
+El acoplamiento se refiere al **grado de interdependencia que tienen dos unidades de software entre sí**, entendiendo por unidades de software: clases, subtipos, métodos, módulos, funciones, bibliotecas, etcétera... Si dos unidades de software son completamente independientes la una de la otra, decimos que están **desacopladas**.
 
 La cohesión de software es el **grado en que elementos diferentes de un sistema permanecen unidos para alcanzar un mejor resultado** que si trabajaran por separado. Se refiere a la forma en que podemos agrupar diversas unidades de software para crear una unidad mayor.
 
@@ -38,25 +38,25 @@ Dice el _tío Bob_, que SOLID nos ayuda a categorizar lo que es un buen o mal c�
 
 Los 5 principios SOLID son:
 
-1. ==_**S**ingle Responsability Principle (SRP)_ - Principio de Responsabilidad Única==
+1. **_Single Responsability Principle (SRP)_ - Principio de Responsabilidad Única**
 
-    Este [principio](https://es.wikipedia.org/wiki/Principio_de_responsabilidad_%C3%BAnica) establece que cada módulo o clase debe tener **responsabilidad sobre una sola parte de la funcionalidad** proporcionada por el software y esta responsabilidad debe estar encapsulada en su totalidad por la clase. Todos sus servicios deben estar estrechamente alineados con esa responsabilidad.
+    Este [principio](#single-responsibility-principle) establece que cada módulo o clase debe tener **responsabilidad sobre una sola parte de la funcionalidad** proporcionada por el software y esta responsabilidad debe estar encapsulada en su totalidad por la clase. Todos sus servicios deben estar estrechamente alineados con esa responsabilidad.
 
-2. ==_**O**pen/Closed Principle (OCP)_ - Principio de Abierto/Cerrado==
+2. **_Open/Closed Principle (OCP)_ - Principio de Abierto/Cerrado**
 
-    Este [principio](https://es.wikipedia.org/wiki/Principio_de_abierto/cerrado) establece que **«una entidad de software (clase, módulo, función, etc.) debe quedar abierta para su extensión, pero cerrada para su modificación»**. Es decir, se debe poder extender el comportamiento de la entidad pero sin modificar su código fuente.
+    Este [principio](#openclosed-principle) establece que **«una entidad de software (clase, módulo, función, etc.) debe quedar abierta para su extensión, pero cerrada para su modificación»**. Es decir, se debe poder extender el comportamiento de la entidad pero sin modificar su código fuente.
 
-3. ==_**L**iskov Substitution Principle (LSP)_ - Principio de Substitución de Liskov==
+3. **_Liskov Substitution Principle (LSP)_ - Principio de Substitución de Liskov**
 
-    Este [principo](https://es.wikipedia.org/wiki/Principio_de_sustituci%C3%B3n_de_Liskov) puede definirse como: **«cada clase que hereda de otra puede usarse como su padre sin necesidad de conocer las diferencias entre ellas»**.
+    Este [principio](#liskov-substitution-principle) puede definirse como: **«cada clase que hereda de otra puede usarse como su padre sin necesidad de conocer las diferencias entre ellas»**.
 
-4. ==_**I**nterface Segregation Principle (ISP)_ - Principio de Segregación de la Interfaz==
+4. **_Interface Segregation Principle (ISP)_ - Principio de Segregación de la Interfaz**
 
-    Este [principio](https://es.wikipedia.org/wiki/Principio_de_segregaci%C3%B3n_de_la_interfaz) establece que los clientes de un programa dado sólo deberían conocer **aquellos métodos del programa que realmente usan, y no aquellos que no necesitan usar**.
+    Este [principio](#interface-segregation-principle) establece que los clientes de un programa dado sólo deberían conocer **aquellos métodos del programa que realmente usan, y no aquellos que no necesitan usar**.
 
-5. ==_**D**ependency Inversion Principle (DIP)_ - Principio de Inversión de Dependencias==
+5. **_Dependency Inversion Principle (DIP)_ - Principio de Inversión de Dependencias**
 
-    Este [principio]((https://es.wikipedia.org/wiki/Inyecci%C3%B3n_de_dependencias)) consta de dos partes:
+    Este [principio](#dependency-inversion-principle) consta de dos partes:
 
     - **Módulos de alto nivel no deben depender de módulos de bajo nivel**. Ambos deben depender de abstracciones.
 
@@ -64,16 +64,19 @@ Los 5 principios SOLID son:
 
 ## "Single Responsibility Principle"
 
-> _"A class should have one, and only one, reason to change"_  
+> **_"A class should have one, and only one, reason to change"_**
+>
 > -- Robert C. Martin
 
-Este principio ayuda a crear código de calidad, mantenible, reusable, testeable, fácil de implementar y previene de efectos secundarios en los cambios. Es aplicable a clases, componentes de software o microservicios.
-
-Los requerimientos del código pueden cambiar con el tiempo. Cada uno de estos cambios en los requerimientos modifica al menos la responsabilidad de una clase. Si una clase tiene muchas responsabilidades deberá cambiar más a menudo que si sólo tuviera una responsabilidad.
+Los requerimientos del código pueden cambiar con el tiempo. Cada uno de estos cambios en los requerimientos va a modificar al menos la responsabilidad de una clase. Si una clase tiene muchas responsabilidades deberá cambiar más a menudo que si sólo tuviera una responsabilidad.
 
 Estos cambios tan reiterados pueden introducir errores o efectos secundarios en otras partes del código. Por tanto, **una clase sólo debería cambiar por una única razón** o lo que es lo mismo, que cambie la responsabilidad de la que se ocupa. Es esto, precisamente, "_razón para cambiar"_, lo que Robert C. Martin identifica como **"responsabilidad"**.
 
 Las clases con una única responsabilidad son más fáciles de mantener y menos propensas a errores.
+
+Este principio ayuda a crear código de calidad, mantenible, reusable, testeable, fácil de implementar y previene de efectos secundarios en los cambios.
+
+Es aplicable a clases, componentes de software o microservicios.
 
 ### Implementación
 
@@ -136,7 +139,8 @@ Eliminando este método de la clase `Vehicle` eliminamos la doble responsabilida
 
 ## "Open/Closed Principle"
 
-> _"Software entities (classes, modules, functions, etc...) should be open for extension, but closed for modification"_  
+> **_"Software entities (classes, modules, functions, etc...) should be open for extension, but closed for modification"_**
+>
 > -- Robert C. Martin
 
 La idea es escribir código de forma que sea posible **añadir nuevas funcionalidades pero sin modificar el código existente**. Esto previene situaciones en que al modificar clases base nos veamos obligados también a adaptar todas las clases dependientes.
@@ -300,6 +304,7 @@ Este principio define que los **objetos de una superclase deben ser reemplazable
 Para conseguir esto las subclases deberían seguir estas reglas:
 
 - No implementar reglas de validación más estrictas en los parámetros de entrada que las implementadas por la clase base.
+
 - Aplicar al menos las mismas reglas a todos los parámetros de salida aplicados por la clase base.
 
 ### Implementación
@@ -368,7 +373,8 @@ public class Duck extends FlyingBird { }
 
 ## "Interface Segregation Principle"
 
-> _"Clients should not be forced to depend upon interfaces that they do not use"_  
+> **_"Clients should not be forced to depend upon interfaces that they do not use"_**
+>
 > -- Robert C. Martin
 
 El objetivo de este principio, al igual que el **_"Single Responsibility Principle"_** es reducir los efectos secundarios y la frecuencia de los cambios si dividimos el código en múltiples partes independientes.
@@ -513,13 +519,14 @@ class Drone implements CameraSwitch {
 
 ## "Dependency Inversion Principle"
 
-La idea general de este principio es tan simple como importante: los módulos de alto nivel, que brindan una lógica compleja, deben ser fácilmente reutilizables y no verse afectados por los cambios en los módulos de bajo nivel, que brindan funciones de utilidad.
+La idea general de este principio es tan simple como importante: **los módulos de alto nivel**, que brindan una lógica compleja, **deben ser fácilmente reutilizables** y no verse afectados por los cambios en los módulos de bajo nivel, que brindan funciones de utilidad.
 
 Para lograr eso, se deben introducir **una abstracción que desacople los módulos de alto y bajo nivel entre sí**.
 
 La definición de este principio según **Robert C. Martin** consta de dos partes:
 
 - Los módulos de alto nivel no deben depender de módulos de bajo nivel. Ambos deberían depender de abstracciones.
+
 - Las abstracciones no deben depender de los detalles. Los detalles deben depender de las abstracciones.
 
 Un importante detalle de esta definición es que tanto los módulos de alto nivel como los de bajo nivel dependen de una abstracción. Por tanto no se invierte la dirección de la dependencia como cabría esperar por el nombre del principio sino que se divide la dependencia entre los módulos de alto y bajo nivel introduciendo una abstracción entre ellos.
