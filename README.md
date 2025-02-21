@@ -627,7 +627,7 @@ Este principio está relacionado con el concepto de [inyección de dependencias]
 
 ---
 
-## Referencias
+## Enlaces
 
 - <https://es.wikipedia.org/wiki/SOLID>  
 - <https://blogs.msdn.microsoft.com/cdndevs/2009/07/15/the-solid-principles-explained-with-motivational-posters/>  

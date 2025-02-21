@@ -8,11 +8,14 @@
   "license": "CC-BY-4.0",
   "homepage": "https://alxgcrz.com/solid.html",
   "scripts": {
+    "pandoc": "pandoc -d custom && copy %npm_config_filename% %npm_config_html%",
     "pandoc:create": "pandoc -d custom",
     "pandoc:copy": "copy %npm_config_filename% %npm_config_html%",
+    "pdf": "mdpdf README.md README.pdf && copy README.pdf %npm_config_pdf%",
     "pdf:create": "mdpdf README.md README.pdf",
     "pdf:copy": "copy README.pdf %npm_config_pdf%",
-    "live": "live-server %npm_config_filename%"
+    "live": "live-server %npm_config_filename%",
+    "live-edge": "live-server %npm_config_filename% --browser=msedge"
   },
   "repository": {
     "type": "git",
