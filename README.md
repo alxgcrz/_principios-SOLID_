@@ -1,11 +1,5 @@
 # Principios SOLID
 
-<!-- markdownlint-disable MD033 -->
-<div style="text-align: center;">
-  <img src="./assets/img/SOLID.png" alt="solid_principles" style="width: 525px; height: auto;">
-</div>
-<!-- markdownlint-disable MD033 -->
-
 SOLID es el acrónimo que acuñó **Michael Feathers**, basándose en los principios de la programación orientada a objetos que **Robert C. Martin** había recopilado en el año 2000 en su paper ["_Design Principles and Design Patterns_"](http://www.cvc.uab.es/shared/teach/a21291/temes/object_oriented_design/materials_adicionals/principles_and_patterns.pdf).
 
 Ocho años más tarde, el _tío Bob_ siguió compendiando consejos y buenas prácticas de desarrollo y se convirtió en el padre del código limpio con su célebre libro _'Clean Code'_.
