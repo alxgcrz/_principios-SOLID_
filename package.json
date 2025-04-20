@@ -7,15 +7,25 @@
   "author": "@alxgcrz",
   "license": "CC-BY-4.0",
   "homepage": "https://alxgcrz.com/solid.html",
+  "engines": {
+  "pandoc": "required",
+  "mdpdf": "required",
+  "live-server": "required"
+  },
+  "config": {
+    "filename": "solid.html",
+    "pdf": "Desarrollo\\Desarrollo\\SOLID[ES].pdf",
+    "html": "..\\..\\_personal_website_\\_projects_\\portfolio_v3\\public"
+  },
   "scripts": {
-    "pandoc": "pandoc -d custom && copy %npm_config_filename% %npm_config_html%",
+    "pandoc": "npm run pandoc:create && npm run pandoc:copy",
     "pandoc:create": "pandoc -d custom",
-    "pandoc:copy": "copy %npm_config_filename% %npm_config_html%",
-    "pdf": "mdpdf README.md README.pdf && copy README.pdf %npm_config_pdf%",
+    "pandoc:copy": "copy %npm_package_config_filename% %npm_package_config_html%",
+    "pdf": "npm run pdf:create && npm run pdf:copy",
     "pdf:create": "mdpdf README.md README.pdf",
-    "pdf:copy": "copy README.pdf %npm_config_pdf%",
-    "live": "live-server %npm_config_filename%",
-    "live-edge": "live-server %npm_config_filename% --browser=msedge"
+    "pdf:copy": "copy README.pdf \"%PDF_BASE_PATH%/%npm_package_config_pdf%\"",
+    "live": "live-server %npm_package_config_filename%",
+    "live-edge": "live-server %npm_package_config_filename% --browser=msedge"
   },
   "repository": {
     "type": "git",
